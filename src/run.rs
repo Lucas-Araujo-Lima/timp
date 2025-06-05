@@ -7,7 +7,7 @@ pub fn run(config: &Config) -> Result<(), Box<dyn std::error::Error>> {
     let mut output_file = fs::OpenOptions::new()
         .write(true)
         .create(true)
-        .open(&config.macros[0].1)?;
+        .open(&config.output_file)?;
 
     for (macro_name, replacement) in config.macros.iter() {
         buffer = buffer.replace(macro_name, replacement);

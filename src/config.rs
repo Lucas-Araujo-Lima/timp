@@ -2,6 +2,7 @@ use std::str::FromStr;
 
 pub struct Config {
     pub source_file: String,
+    pub output_file: String,
     pub macros: Vec<(String, String)>,
 }
 
@@ -10,6 +11,7 @@ impl Config {
         // arg parsing
         let mut config = Config {
             source_file: String::new(),
+            output_file: String::new(),
             macros: Vec::new(),
         };
 
@@ -29,14 +31,11 @@ impl Config {
 
         let output_filename = args.next();
         if let Some(filename) = output_filename {
-            config.macros.push((
-                String::from_str("filename").unwrap(),
-                String::from_str(&filename).unwrap(),
-            ))
+            config.output_file = filename.clone();
         } else {
             return Err(Box::new(std::io::Error::new(
                 std::io::ErrorKind::InvalidInput,
-                "Please give a output filename",
+                "Please give an output filename",
             )));
         }
 
