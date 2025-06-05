@@ -46,12 +46,6 @@ impl Config {
                 if let Some(index) = equal_index {
                     let macro_name = String::from_str(&arg[1..index].trim()).unwrap();
                     let replacement = String::from_str(&arg[index + 1..].trim()).unwrap();
-                    if macro_name == "filename" {
-                        return Err(Box::new(std::io::Error::new(
-                            std::io::ErrorKind::InvalidInput,
-                            "'filename' macro is reserved. It is set automatically as the output filename",
-                        )));
-                    }
                     if macro_name.len() == 0 {
                         return Err(Box::new(std::io::Error::new(
                             std::io::ErrorKind::InvalidInput,
