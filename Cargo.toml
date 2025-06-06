@@ -2,3 +2,7 @@
 name = "timp"
 version = "0.1.0"
 edition = "2024"
+description="Simple linux CLI for importing code templates with macros"
+readme="readme.md"
+license="MIT"
+repository="https://github.com/Lucas-Araujo-Lima/timp"
