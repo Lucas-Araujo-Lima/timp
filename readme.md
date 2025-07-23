@@ -13,4 +13,4 @@ In a more complex scenario, your template may have multiple macros, that can be 
 when writing a template, that timp only does a simple text replacement. Therefore, if the text replacement breaks the language's syntax, timp will not correct it.
 
 Also, if the user does not give a definition to a macro used in a template, timp simply does not do any replacement, so the output will have the macros still in it.
-I plan on, in the future, allowing templates to list all their needed macros and, if desired, give default definitions that are used if the user does not define them himself.
+Templates can, however, give default definitions to macros that are applied if the user does not provide one.

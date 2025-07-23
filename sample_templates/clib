@@ -1,6 +1,11 @@
+TIMPSTART
+libname=lib
+funcname=func
+TIMPEND
+
 #ifndef __libname__
 #define __libname__
 
-
+int funcname();
 
 #endif

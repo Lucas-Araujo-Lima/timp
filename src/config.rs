@@ -1,9 +1,9 @@
-use std::str::FromStr;
+use std::{collections::HashMap, str::FromStr};
 
 pub struct Config {
     pub source_file: String,
     pub output_file: String,
-    pub macros: Vec<(String, String)>,
+    pub macros: HashMap<String, String>,
 }
 
 impl Config {
@@ -12,7 +12,7 @@ impl Config {
         let mut config = Config {
             source_file: String::new(),
             output_file: String::new(),
-            macros: Vec::new(),
+            macros: HashMap::new(),
         };
 
         let mut args = std::env::args();
@@ -44,20 +44,20 @@ impl Config {
                 let equal_index = arg.find("=");
                 if let Some(index) = equal_index {
                     let macro_name = String::from_str(&arg[1..index].trim()).unwrap();
-                    let replacement = String::from_str(&arg[index + 1..].trim()).unwrap();
+                    let definition = String::from_str(&arg[index + 1..].trim()).unwrap();
                     if macro_name.len() == 0 {
                         return Err(Box::new(std::io::Error::new(
                             std::io::ErrorKind::InvalidInput,
                             "Bad macro. No macro name given",
                         )));
                     }
-                    if replacement.len() == 0 {
+                    if definition.len() == 0 {
                         return Err(Box::new(std::io::Error::new(
                             std::io::ErrorKind::InvalidInput,
-                            "Bad macro. No replacement given",
+                            "Bad macro. No definition given",
                         )));
                     }
-                    config.macros.push((macro_name, replacement));
+                    config.macros.insert(macro_name, definition);
                 } else {
                     return Err(Box::new(std::io::Error::new(
                         std::io::ErrorKind::InvalidInput,
