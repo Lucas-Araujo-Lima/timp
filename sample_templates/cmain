@@ -1,3 +1,5 @@
+TIMPSTART
+TIMPEND
 #include <stdio.h>
 #include <stdlib.h>
 
